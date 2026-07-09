@@ -31,7 +31,19 @@ npx serve .
 
 > Payment and contact forms require the Vercel API routes. Use `vercel dev` for full local testing.
 
-## Deploy to Vercel
+## Deploy on Hostinger (Node.js + GitHub)
+
+1. Push this repo to GitHub
+2. In hPanel → **Add Website** → **Node.js Web App** → **Connect GitHub**
+3. Select repo: `websitemanagement1986/Warepro`, branch: `main`
+4. Build settings:
+   - **Install command:** `npm install`
+   - **Build command:** `npm run build`
+   - **Start command:** `npm start` (runs `node server.js`)
+5. Add environment variables in Hostinger dashboard (Razorpay + email keys)
+6. Connect your domain in hPanel
+
+## Deploy to Vercel (alternative)
 
 1. Push this repo to GitHub: `https://github.com/websitemanagement1986/Warepro`
 2. Sign up at [vercel.com](https://vercel.com) and import the GitHub repo
