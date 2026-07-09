@@ -1,5 +1,6 @@
 # Warepro — Software Marketplace
 
+
 Discover, compare, and buy software online in India. Guest checkout with Razorpay payments (UPI, Cards, Net Banking). No login, no database.
 
 **Live site:** Deploy on [Vercel](https://vercel.com) (required for payment API).
