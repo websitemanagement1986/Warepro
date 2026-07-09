@@ -15,6 +15,7 @@ const CATEGORIES = [
   { slug: 'billing', name: 'Billing & Invoicing', shortName: 'Billing & Invoicing', icon: '🧾', color: '#7a6348', image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=420&fit=crop&q=80', tagline: 'Reduce Billing Errors by 80%', description: 'Automate billing and invoicing with GST-ready tools.', gradient: 'linear-gradient(135deg, #0891b2 0%, #22d3ee 100%)', accent: '#0891b2' },
   { slug: 'school', name: 'School Management', shortName: 'School Management', icon: '🎓', color: '#5a7a5e', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&h=420&fit=crop&q=80', tagline: 'Improve Efficiency by 65%', description: 'Automate attendance, fees, scheduling, and communication.', gradient: 'linear-gradient(135deg, #d97706 0%, #fbbf24 100%)', accent: '#d97706' },
   { slug: 'productivity', name: 'Productivity Software', shortName: 'Productivity', icon: '⚡', color: '#4f6d8f', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=420&fit=crop&q=80', tagline: 'Increase Productivity by 50%', description: 'Simplify tasks, enhance collaboration, and gain insights.', gradient: 'linear-gradient(135deg, #4f46e5 0%, #818cf8 100%)', accent: '#4f46e5' },
+  { slug: 'accessories', name: 'Computer Accessories', shortName: 'Accessories', icon: '🔌', color: '#5c6bc0', image: 'https://images.unsplash.com/photo-1588508068419-b388109a7d8d?w=500&h=420&fit=crop&q=80', tagline: 'Starting at just ₹100', description: 'Cables, adapters and essentials for your PC and laptop.' },
 ];
 
 const PRODUCTS = [
@@ -23,8 +24,10 @@ const PRODUCTS = [
   { id: 'account-plus', category: 'accounting', name: 'Account Plus', vendor: 'Wheelhouse Consultancy', rating: 4.8, price: 999, originalPrice: null, period: '/Month', description: 'Cloud accounting with real-time dashboards and automated entries.', features: ['Cloud Sync', 'Auto Entries', 'Expense Tracking', 'Financial Reports'] },
 
   { id: 'shieldguard-av', category: 'antivirus', name: 'ShieldGuard AV', vendor: 'CyberShield India', rating: 4.4, price: 221, originalPrice: 480, period: '/PC/Year', description: 'Advanced threat protection with real-time scanning and firewall.', features: ['Real-time Scan', 'Firewall', 'Ransomware Shield', 'Safe Banking'] },
+  { id: 'shieldguard-av-6m', category: 'antivirus', name: 'ShieldGuard AV — 6 Month Plan', vendor: 'CyberShield India', rating: 4.5, price: 149, originalPrice: 249, period: '/6 Months', description: 'Discounted 6-month antivirus license. Full protection for 1 PC — ideal for students and home users.', features: ['6 Months License', 'Real-time Protection', 'Auto Updates', 'Email Support'] },
   { id: 'safenet-security', category: 'antivirus', name: 'SafeNet Security', vendor: 'SafeNet Labs', rating: 4.6, price: 311, originalPrice: 979, period: '/Year', description: 'Comprehensive security suite for home and business users.', features: ['Anti-malware', 'Web Protection', 'Parental Controls', 'VPN Add-on'] },
   { id: 'securemax-infiniti', category: 'antivirus', name: 'SecureMax Infiniti', vendor: 'SecureMax Computing', rating: 4.3, price: 2372, originalPrice: 13999, period: '/Year', description: 'Enterprise-grade endpoint security for unlimited devices.', features: ['Unlimited Devices', 'EDR', 'Cloud Console', '24/7 Support'] },
+  { id: 'quickshield-6m', category: 'antivirus', name: 'QuickShield Pro — 6 Months', vendor: 'SafeNet Labs', rating: 4.4, price: 179, originalPrice: 299, period: '/6 Months', description: 'Limited-time offer: 6-month antivirus with malware & phishing protection for 1 device.', features: ['Phishing Block', 'USB Scan', 'Silent Mode', 'Instant Activation'] },
 
   { id: 'peoplepulse-hrms', category: 'hr', name: 'PeoplePulse HRMS', vendor: 'PeoplePulse Tech', rating: 4.9, price: 45, originalPrice: null, period: '/User/Month', description: 'Full HRMS with attendance, payroll, and performance management.', features: ['Payroll', 'Attendance', 'Leave Management', 'Performance Reviews'] },
   { id: 'teamtrack-hr', category: 'hr', name: 'TeamTrack HR', vendor: 'Work Companion LLP', rating: 4.8, price: 50, originalPrice: null, period: '/Month', description: 'HR platform for growing teams with onboarding and compliance.', features: ['Onboarding', 'PF/ESI Compliance', 'Employee Self-service', 'Reports'] },
@@ -49,6 +52,13 @@ const PRODUCTS = [
   { id: 'workflow-suite', category: 'productivity', name: 'WorkFlow Suite', vendor: 'Productive Labs', rating: 4.4, price: 2570, originalPrice: 2999, period: '/Year', description: 'Project management and team collaboration platform.', features: ['Kanban Boards', 'Time Tracking', 'File Sharing', 'Integrations'] },
   { id: 'collabdesk', category: 'productivity', name: 'CollabDesk', vendor: 'CollabDesk Inc', rating: 4.6, price: 1549, originalPrice: 2500, period: '/Year', description: 'Team productivity with docs, chat, and video meetings.', features: ['Docs', 'Chat', 'Video Calls', 'Calendar'] },
   { id: 'taskflow-pro', category: 'productivity', name: 'TaskFlow Pro', vendor: 'TaskFlow Tech', rating: 4.5, price: 999, originalPrice: 1499, period: '/Year', description: 'Task and project management for remote teams.', features: ['Gantt Charts', 'Automations', 'Templates', 'Mobile App'] },
+
+  { id: 'vga-cable-1.5m', category: 'accessories', name: 'VGA Cable 1.5m', vendor: 'Warepro Essentials', rating: 4.3, price: 120, originalPrice: 199, period: '', description: 'High-quality VGA (DB15) male-to-male cable for monitors, projectors and CPUs. 1.5 metre length.', features: ['1.5m Length', 'Gold-plated connectors', 'Ferrite cores', 'Monitor & projector compatible'] },
+  { id: 'vga-cable-3m', category: 'accessories', name: 'VGA Cable 3m', vendor: 'Warepro Essentials', rating: 4.2, price: 165, originalPrice: 249, period: '', description: 'Extended VGA cable for desk setups. Supports up to 1080p display output.', features: ['3m Length', 'Double shielded', 'Moulded connectors', 'Durable PVC jacket'] },
+  { id: 'usb-cable-micro-1m', category: 'accessories', name: 'USB 2.0 Cable (Micro USB) 1m', vendor: 'Warepro Essentials', rating: 4.4, price: 100, originalPrice: 149, period: '', description: 'Standard USB-A to Micro USB cable for charging and data sync. 1 metre — our lowest price!', features: ['USB 2.0', '1m Length', 'Charge + data', 'Android compatible'] },
+  { id: 'usb-cable-type-c-1m', category: 'accessories', name: 'USB Type-C Cable 1m', vendor: 'Warepro Essentials', rating: 4.5, price: 149, originalPrice: 199, period: '', description: 'USB-A to Type-C fast charging cable for smartphones, tablets and laptops.', features: ['Type-C', 'Fast charge support', '1m Length', 'Nylon braided'] },
+  { id: 'usb-extension-1m', category: 'accessories', name: 'USB Extension Cable 1m', vendor: 'Warepro Essentials', rating: 4.1, price: 110, originalPrice: 169, period: '', description: 'USB-A male to female extension cable. Extend your keyboard, mouse or dongle reach.', features: ['1m Extension', 'USB 2.0', 'Plug & play', 'PC & laptop'] },
+  { id: 'hdmi-usb-adapter', category: 'accessories', name: 'USB to HDMI Adapter', vendor: 'Warepro Essentials', rating: 4.0, price: 199, originalPrice: 349, period: '', description: 'Compact USB display adapter for secondary monitor output. Great value under ₹200.', features: ['1080p output', 'Compact design', 'Windows compatible', 'Easy setup'] },
 ];
 
 function getCategory(slug) {
@@ -74,8 +84,12 @@ function getDiscount(product) {
   return pct > 0 ? `Save upto ${pct}%` : null;
 }
 
+function getBudgetProducts() {
+  return PRODUCTS.filter((p) => p.price >= 100 && p.price <= 200 && !p.priceOnRequest);
+}
+
 function getProductCount(categorySlug) {
   return PRODUCTS.filter((p) => p.category === categorySlug).length;
 }
 
-if (typeof module !== 'undefined') module.exports = { WAREPRO, CATEGORIES, PRODUCTS, getCategory, getProductsByCategory, getProduct, formatPrice, getDiscount, getProductCount };
+if (typeof module !== 'undefined') module.exports = { WAREPRO, CATEGORIES, PRODUCTS, getCategory, getProductsByCategory, getProduct, formatPrice, getDiscount, getProductCount, getBudgetProducts };

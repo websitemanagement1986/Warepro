@@ -3,6 +3,8 @@ const PRODUCTS = [
   { id: 'gstwise-billing', name: 'GSTWise Billing', price: 1499 },
   { id: 'account-plus', name: 'Account Plus', price: 999 },
   { id: 'shieldguard-av', name: 'ShieldGuard AV', price: 221 },
+  { id: 'shieldguard-av-6m', name: 'ShieldGuard AV — 6 Month Plan', price: 149 },
+  { id: 'quickshield-6m', name: 'QuickShield Pro — 6 Months', price: 179 },
   { id: 'safenet-security', name: 'SafeNet Security', price: 311 },
   { id: 'securemax-infiniti', name: 'SecureMax Infiniti', price: 2372 },
   { id: 'peoplepulse-hrms', name: 'PeoplePulse HRMS', price: 45 },
@@ -21,28 +23,10 @@ const PRODUCTS = [
   { id: 'workflow-suite', name: 'WorkFlow Suite', price: 2570 },
   { id: 'collabdesk', name: 'CollabDesk', price: 1549 },
   { id: 'taskflow-pro', name: 'TaskFlow Pro', price: 999 },
+  { id: 'vga-cable-1.5m', name: 'VGA Cable 1.5m', price: 120 },
+  { id: 'vga-cable-3m', name: 'VGA Cable 3m', price: 165 },
+  { id: 'usb-cable-micro-1m', name: 'USB 2.0 Cable (Micro USB) 1m', price: 100 },
+  { id: 'usb-cable-type-c-1m', name: 'USB Type-C Cable 1m', price: 149 },
+  { id: 'usb-extension-1m', name: 'USB Extension Cable 1m', price: 110 },
+  { id: 'hdmi-usb-adapter', name: 'USB to HDMI Adapter', price: 199 },
 ];
-
-function getProduct(id) {
-  return PRODUCTS.find((p) => p.id === id);
-}
-
-function validateCart(cart) {
-  if (!Array.isArray(cart) || cart.length === 0) {
-    throw new Error('Cart is empty');
-  }
-  let total = 0;
-  const items = [];
-  for (const item of cart) {
-    const product = getProduct(item.id);
-    if (!product) throw new Error(`Invalid product: ${item.id}`);
-    const qty = Math.max(1, Math.min(99, parseInt(item.qty, 10) || 1));
-    const lineTotal = product.price * qty;
-    total += lineTotal;
-    items.push({ id: product.id, name: product.name, price: product.price, qty, lineTotal });
-  }
-  if (total < 1) throw new Error('Invalid order total');
-  return { items, total, amountPaise: Math.round(total * 100) };
-}
-
-module.exports = { PRODUCTS, getProduct, validateCart };

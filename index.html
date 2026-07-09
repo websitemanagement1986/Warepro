@@ -14,7 +14,7 @@
   <section class="hero">
     <div class="container">
       <h1>Discover, Compare &amp; Buy the Best<br>Software for Your Business</h1>
-      <p>India's trusted software marketplace — UPI, Cards &amp; Net Banking accepted</p>
+      <p>India's trusted marketplace — software, cables &amp; accessories from <strong style="color:var(--accent);">₹100</strong></p>
       <form class="hero-search" onsubmit="event.preventDefault(); window.location.href='categories.html';">
         <input type="search" placeholder="Search software, e.g. Accounting, CRM, Antivirus...">
         <button type="submit">Search</button>
@@ -78,6 +78,19 @@
         <p>Top products in each category</p>
       </div>
       <div id="category-tabs"></div>
+    </div>
+  </section>
+
+  <section class="budget-section" style="background:var(--white);">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <h2>Starting at ₹100</h2>
+          <p style="color:var(--text-muted);margin-top:6px;">Cables, accessories &amp; discounted antivirus plans — all under ₹200</p>
+        </div>
+        <a href="category.html?cat=accessories" class="view-all">View accessories →</a>
+      </div>
+      <div id="budget-grid" class="product-grid"></div>
     </div>
   </section>
 
@@ -166,6 +179,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderCategoryGrid('home-categories');
       initCategoryTabs('category-tabs');
+      initBudgetSection('budget-grid');
       initDealsSection('deals-grid');
       initTrendingSection('trending-row');
     });

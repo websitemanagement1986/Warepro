@@ -161,6 +161,13 @@ function initDealsSection(containerId) {
   renderProductGrid(deals, containerId);
 }
 
+function initBudgetSection(containerId) {
+  const budget = typeof getBudgetProducts === 'function'
+    ? getBudgetProducts()
+    : PRODUCTS.filter((p) => p.price >= 100 && p.price <= 200);
+  renderProductGrid(budget, containerId);
+}
+
 function initTrendingSection(containerId) {
   const trending = [...PRODUCTS].sort((a, b) => b.rating - a.rating).slice(0, 8);
   const el = document.getElementById(containerId);
