@@ -64,7 +64,7 @@ const PRODUCTS = [
 const PRODUCT_IMAGE_BASE = 'assets/products';
 
 const PRODUCT_IMAGES = Object.fromEntries(
-  PRODUCTS.map((p) => [p.id, `${PRODUCT_IMAGE_BASE}/${p.id}.svg`])
+  PRODUCTS.map((p) => [p.id, `${PRODUCT_IMAGE_BASE}/${p.id}.jpg`])
 );
 
 PRODUCTS.forEach((p) => {
@@ -73,7 +73,7 @@ PRODUCTS.forEach((p) => {
 
 function getProductImage(product) {
   if (!product) return '';
-  return product.image || PRODUCT_IMAGES[product.id] || `${PRODUCT_IMAGE_BASE}/${product.id}.svg`;
+  return product.image || PRODUCT_IMAGES[product.id] || `${PRODUCT_IMAGE_BASE}/${product.id}.jpg`;
 }
 
 function getCategory(slug) {
