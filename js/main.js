@@ -18,13 +18,14 @@ function renderHeader() {
           <a href="categories.html" class="nav-link">Categories ▾</a>
           <div class="dropdown-menu">${catLinks}</div>
         </div>
-        <a href="categories.html" class="nav-link">All Products</a>
+        <a href="categories.html" class="nav-link">Compare</a>
+        <a href="contact.html" class="nav-link">Ask Question</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
       </nav>
       <div class="header-actions">
+        <a href="contact.html" class="btn-advice">Get Free Advice</a>
         <a href="cart.html" class="cart-link">
-          🛒 Cart <span class="cart-badge">0</span>
+          🛒 <span class="cart-badge">0</span>
         </a>
         <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
       </div>

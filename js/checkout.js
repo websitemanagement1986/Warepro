@@ -111,7 +111,7 @@ async function initiatePayment() {
       description: 'Software Purchase',
       order_id: result.order_id,
       prefill: { name: data.name, email: data.email, contact: data.phone },
-      theme: { color: '#0d9488' },
+      theme: { color: '#ff6b00' },
       handler: async function (response) {
         try {
           const verifyRes = await fetch('/api/verify-payment', {

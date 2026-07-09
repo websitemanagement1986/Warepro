@@ -1,8 +1,9 @@
 function renderProductCard(product) {
   const discount = getDiscount(product);
   const priceHtml = product.priceOnRequest || product.price === null
-    ? '<span class="price por">Price on Request</span>'
-    : `<span class="price">₹${product.price.toLocaleString('en-IN')}<small>${product.period || ''}</small></span>
+    ? '<span class="price-label">Starting Price:</span><span class="price por">Price on Request</span>'
+    : `<span class="price-label">Starting at:</span>
+       <span class="price">₹${product.price.toLocaleString('en-IN')}<small>${product.period || ''}</small></span>
        ${product.originalPrice ? `<span class="price-old">₹${product.originalPrice.toLocaleString('en-IN')}</span>` : ''}
        ${discount ? `<span class="badge-save">${discount}</span>` : ''}`;
 
@@ -13,10 +14,10 @@ function renderProductCard(product) {
   return `
     <article class="product-card">
       <a href="product.html?id=${product.id}" class="product-card-link">
-        <div class="product-icon">${getCategory(product.category)?.icon || '📦'}</div>
+        <div class="product-icon-wrap">${getCategory(product.category)?.icon || '📦'}</div>
         <h3>${product.name}</h3>
         <p class="vendor">${product.vendor}</p>
-        <div class="rating">★ ${product.rating}</div>
+        <div class="rating">${product.rating}</div>
         <div class="price-row">${priceHtml}</div>
       </a>
       <div class="product-card-actions">
@@ -26,13 +27,16 @@ function renderProductCard(product) {
     </article>`;
 }
 
-function renderCategoryCard(cat) {
+function renderCategoryCard(cat, index) {
   const count = getProductCount(cat.slug);
+  const colorClass = `c${index % 8}`;
   return `
     <a href="category.html?cat=${cat.slug}" class="category-card">
-      <span class="cat-icon">${cat.icon}</span>
-      <h3>${cat.name}</h3>
-      <p class="cat-tagline">${cat.tagline}</p>
+      <div class="cat-card-top ${colorClass}">
+        <span class="cat-icon">${cat.icon}</span>
+        <h3>${cat.name}</h3>
+        <p class="cat-tagline">${cat.tagline}</p>
+      </div>
       <p class="cat-desc">${cat.description}</p>
       <span class="cat-count">${count} products →</span>
     </a>`;
@@ -51,7 +55,7 @@ function renderProductGrid(products, containerId) {
 function renderCategoryGrid(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
-  el.innerHTML = CATEGORIES.map(renderCategoryCard).join('');
+  el.innerHTML = CATEGORIES.map((cat, i) => renderCategoryCard(cat, i)).join('');
 }
 
 function handleAddToCart(id) {
