@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category | Warepro</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" style="color:#94a3b8;"><a href="index.html" style="color:#ccfbf1;">Home</a> › <span id="breadcrumb-cat">Category</span></nav>
+      <h1 id="page-title">Category</h1>
+      <p id="category-desc"></p>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      <div id="category-products" class="product-grid"></div>
+    </div>
+  </section>
+  <div id="site-footer"></div>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/categories.js"></script>
+  <script src="js/main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', initCategoryPage);</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Warepro</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="page-header"><div class="container"><h1>Contact Us</h1><p>We're here to help</p></div></div>
+  <section>
+    <div class="container contact-grid">
+      <div class="checkout-form">
+        <h2>Send us a Message</h2>
+        <div id="contact-errors"></div>
+        <div id="contact-success" style="display:none;color:var(--primary);margin-bottom:16px;"></div>
+        <div class="form-group">
+          <label for="cname">Your Name *</label>
+          <input type="text" id="cname" required>
+        </div>
+        <div class="form-group">
+          <label for="cemail">Email *</label>
+          <input type="email" id="cemail" required>
+        </div>
+        <div class="form-group">
+          <label for="cphone">Phone</label>
+          <input type="tel" id="cphone">
+        </div>
+        <div class="form-group">
+          <label for="cmessage">Message *</label>
+          <textarea id="cmessage" rows="5" required placeholder="How can we help you?"></textarea>
+        </div>
+        <button id="contact-btn" class="btn btn-primary btn-lg">Send Message</button>
+      </div>
+      <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p><strong>📍 Address</strong><br>F-020, FF GNS Plaza, Site 4 Kasna,<br>Greater Noida, Gautam Buddha Nagar,<br>UP 201310</p>
+        <p><strong>📞 Phone</strong><br><a href="tel:+918826623286">+91 8826623286</a></p>
+        <p><strong>✉️ Email</strong><br><a href="mailto:support@warepro.in">support@warepro.in</a></p>
+        <p><strong>🕐 Business Hours</strong><br>Mon – Sat: 10:00 AM – 7:00 PM IST</p>
+      </div>
+    </div>
+  </section>
+  <div id="site-footer"></div>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('contact-btn').addEventListener('click', async () => {
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cemail').value.trim();
+      const phone = document.getElementById('cphone').value.trim();
+      const message = document.getElementById('cmessage').value.trim();
+      const errEl = document.getElementById('contact-errors');
+      const okEl = document.getElementById('contact-success');
+      errEl.innerHTML = '';
+      okEl.style.display = 'none';
+      if (!name || !email || !message) { errEl.innerHTML = '<p style="color:#ef4444;">Please fill all required fields.</p>'; return; }
+      const btn = document.getElementById('contact-btn');
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone, message }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to send');
+        okEl.textContent = 'Message sent successfully! We will get back to you soon.';
+        okEl.style.display = 'block';
+        document.getElementById('cname').value = '';
+        document.getElementById('cemail').value = '';
+        document.getElementById('cphone').value = '';
+        document.getElementById('cmessage').value = '';
+      } catch (e) {
+        errEl.innerHTML = `<p style="color:#ef4444;">${e.message}. Contact us directly at <a href="tel:+918826623286">+91 8826623286</a> or <a href="mailto:support@warepro.in">support@warepro.in</a>.</p>`;
+      }
+      btn.disabled = false; btn.textContent = 'Send Message';
+    });
+  </script>
+</body>
+</html>
