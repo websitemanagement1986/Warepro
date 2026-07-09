@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#546e7a"/>
+      <stop offset="100%" stop-color="#0b2447"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <rect width="400" height="108" fill="rgba(0,0,0,0.22)"/>
+  <text x="22" y="50" fill="#fff" font-family="Arial,sans-serif" font-size="21" font-weight="bold">USB to HDMI</text>
+  <text x="22" y="76" fill="rgba(255,255,255,0.8)" font-family="Arial,sans-serif" font-size="14">Adapter</text>
+  <rect y="108" width="400" height="192" fill="#eceff1"/>
+  <rect x="115" y="152" width="170" height="44" rx="8" fill="#37474f" stroke="#263238" stroke-width="2"/>
+<text x="200" y="180" text-anchor="middle" fill="#fff" font-family="Arial" font-size="14" font-weight="bold">USB → HDMI</text>
+<rect x="55" y="166" width="48" height="16" rx="3" fill="#90a4ae"/>
+<rect x="297" y="166" width="48" height="16" rx="3" fill="#90a4ae"/>
+  <rect y="288" width="400" height="12" fill="#ff6b00"/>
+  <text x="380" y="298" text-anchor="end" fill="#fff" font-family="Arial" font-size="9" opacity="0.9">Warepro</text>
+</svg>

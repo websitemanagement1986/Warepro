@@ -12,9 +12,8 @@ function renderProductCard(product) {
     : `<button class="btn btn-primary btn-sm" onclick="handleAddToCart('${product.id}')">Add to Cart</button>`;
 
   const img = getProductImage(product);
-  const thumb = img
-    ? `<div class="product-thumb"><img src="${img}" alt="${product.name}" loading="lazy" width="400" height="300"></div>`
-    : `<div class="product-icon-wrap">${getCategory(product.category)?.icon || '📦'}</div>`;
+  const icon = getCategory(product.category)?.icon || '📦';
+  const thumb = `<div class="product-thumb"><img src="${img}" alt="${product.name}" loading="lazy" width="400" height="300" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'product-thumb-fallback\\'>${icon}</span>'"></div>`;
 
   return `
     <article class="product-card">

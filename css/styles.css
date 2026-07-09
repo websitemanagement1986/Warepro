@@ -367,6 +367,15 @@ section { padding: 56px 0; }
   transition: transform 0.3s;
 }
 .product-card:hover .product-thumb img { transform: scale(1.05); }
+.product-thumb-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #e8eef5, #f0f4f8);
+}
 .product-card h3 {
   font-size: 0.95rem; margin-bottom: 4px; font-weight: 700;
   color: var(--header-bg); line-height: 1.35;

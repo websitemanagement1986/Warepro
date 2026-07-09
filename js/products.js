@@ -61,48 +61,19 @@ const PRODUCTS = [
   { id: 'hdmi-usb-adapter', category: 'accessories', name: 'USB to HDMI Adapter', vendor: 'Warepro Essentials', rating: 4.0, price: 199, originalPrice: 349, period: '', description: 'Compact USB display adapter for secondary monitor output. Great value under ₹200.', features: ['1080p output', 'Compact design', 'Windows compatible', 'Easy setup'] },
 ];
 
-const PRODUCT_IMAGES = {
-  'ledgermax-pro': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop&q=80',
-  'gstwise-billing': 'https://images.unsplash.com/photo-1551836022-d5d9e2458ecb?w=400&h=300&fit=crop&q=80',
-  'account-plus': 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&q=80',
-  'shieldguard-av': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop&q=80',
-  'shieldguard-av-6m': 'https://images.unsplash.com/photo-1614064641938-3bbee5293a2a?w=400&h=300&fit=crop&q=80',
-  'safenet-security': 'https://images.unsplash.com/photo-1633265486064-086b219458ec?w=400&h=300&fit=crop&q=80',
-  'securemax-infiniti': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop&q=80',
-  'quickshield-6m': 'https://images.unsplash.com/photo-1563206764-5bbedcab3382?w=400&h=300&fit=crop&q=80',
-  'peoplepulse-hrms': 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop&q=80',
-  'teamtrack-hr': 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=300&fit=crop&q=80',
-  'hr-connect': 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=400&h=300&fit=crop&q=80',
-  'saleflow-crm': 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&h=300&fit=crop&q=80',
-  'leadbridge-crm': 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop&q=80',
-  'kylas-style-crm': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80',
-  'billeease-pos': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop&q=80',
-  'retailpro-pos': 'https://images.unsplash.com/photo-1472851294028-aa77cd0ba3c5?w=400&h=300&fit=crop&q=80',
-  'shopmate-erp': 'https://images.unsplash.com/photo-1563013545-824ae1b704d3?w=400&h=300&fit=crop&q=80',
-  'invoicehub': 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=300&fit=crop&q=80',
-  'payroll-bill': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&q=80',
-  'billmaster-pro': 'https://images.unsplash.com/photo-1554224154-26032cdc0c0f?w=400&h=300&fit=crop&q=80',
-  'edumanage-pro': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop&q=80',
-  'campus-sync': 'https://images.unsplash.com/photo-1523050852268-98c037a6b3b0?w=400&h=300&fit=crop&q=80',
-  'schooledge': 'https://images.unsplash.com/photo-1580582932225-93d838a25ad6?w=400&h=300&fit=crop&q=80',
-  'workflow-suite': 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&q=80',
-  'collabdesk': 'https://images.unsplash.com/photo-1522071820081-007f0089ce05?w=400&h=300&fit=crop&q=80',
-  'taskflow-pro': 'https://images.unsplash.com/photo-1486312338219-69bd509d4ff4?w=400&h=300&fit=crop&q=80',
-  'vga-cable-1.5m': 'https://images.unsplash.com/photo-1597872200911-3ba4653a389b?w=400&h=300&fit=crop&q=80',
-  'vga-cable-3m': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=80',
-  'usb-cable-micro-1m': 'https://images.unsplash.com/photo-1588508068419-b388109a7d8d?w=400&h=300&fit=crop&q=80',
-  'usb-cable-type-c-1m': 'https://images.unsplash.com/photo-1625948515291-e763f7f909ea?w=400&h=300&fit=crop&q=80',
-  'usb-extension-1m': 'https://images.unsplash.com/photo-1625729523685-35b5e6e28103?w=400&h=300&fit=crop&q=80',
-  'hdmi-usb-adapter': 'https://images.unsplash.com/photo-1544197150-4bb35927c4ad?w=400&h=300&fit=crop&q=80',
-};
+const PRODUCT_IMAGE_BASE = 'assets/products';
+
+const PRODUCT_IMAGES = Object.fromEntries(
+  PRODUCTS.map((p) => [p.id, `${PRODUCT_IMAGE_BASE}/${p.id}.svg`])
+);
 
 PRODUCTS.forEach((p) => {
-  p.image = PRODUCT_IMAGES[p.id] || CATEGORIES.find((c) => c.slug === p.category)?.image;
+  p.image = PRODUCT_IMAGES[p.id];
 });
 
 function getProductImage(product) {
   if (!product) return '';
-  return product.image || PRODUCT_IMAGES[product.id] || getCategory(product.category)?.image || '';
+  return product.image || PRODUCT_IMAGES[product.id] || `${PRODUCT_IMAGE_BASE}/${product.id}.svg`;
 }
 
 function getCategory(slug) {
