@@ -27,18 +27,24 @@ function renderProductCard(product) {
     </article>`;
 }
 
-function renderCategoryCard(cat, index) {
+function renderCategoryCard(cat) {
   const count = getProductCount(cat.slug);
-  const colorClass = `c${index % 8}`;
+  const title = cat.shortName || cat.name.replace(' Software', '');
+  const bg = cat.color || '#4a6478';
+  const img = cat.image || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=420&fit=crop&q=80';
   return `
-    <a href="category.html?cat=${cat.slug}" class="category-card">
-      <div class="cat-card-top ${colorClass}">
-        <span class="cat-icon">${cat.icon}</span>
-        <h3>${cat.name}</h3>
-        <p class="cat-tagline">${cat.tagline}</p>
+    <a href="category.html?cat=${cat.slug}" class="category-card-v2" style="--cat-color: ${bg}">
+      <div class="cat-card-banner">
+        <span class="cat-title-main">${title}</span>
+        <span class="cat-title-sub">Software</span>
       </div>
-      <p class="cat-desc">${cat.description}</p>
-      <span class="cat-count">${count} products →</span>
+      <div class="cat-card-photo">
+        <img src="${img}" alt="${cat.name}" loading="lazy" width="220" height="200">
+      </div>
+      <div class="cat-card-hover">
+        <p class="cat-hover-tagline">${cat.tagline}</p>
+        <span class="cat-hover-link">${count} products →</span>
+      </div>
     </a>`;
 }
 
@@ -55,7 +61,10 @@ function renderProductGrid(products, containerId) {
 function renderCategoryGrid(containerId) {
   const el = document.getElementById(containerId);
   if (!el) return;
-  el.innerHTML = CATEGORIES.map((cat, i) => renderCategoryCard(cat, i)).join('');
+  if (containerId === 'all-categories') {
+    el.className = 'category-grid category-grid-all';
+  }
+  el.innerHTML = CATEGORIES.map((cat) => renderCategoryCard(cat)).join('');
 }
 
 function handleAddToCart(id) {
