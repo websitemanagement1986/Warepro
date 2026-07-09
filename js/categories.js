@@ -11,10 +11,15 @@ function renderProductCard(product) {
     ? `<a href="contact.html" class="btn btn-outline btn-sm">Get Quote</a>`
     : `<button class="btn btn-primary btn-sm" onclick="handleAddToCart('${product.id}')">Add to Cart</button>`;
 
+  const img = getProductImage(product);
+  const thumb = img
+    ? `<div class="product-thumb"><img src="${img}" alt="${product.name}" loading="lazy" width="400" height="300"></div>`
+    : `<div class="product-icon-wrap">${getCategory(product.category)?.icon || '📦'}</div>`;
+
   return `
     <article class="product-card">
       <a href="product.html?id=${product.id}" class="product-card-link">
-        <div class="product-icon-wrap">${getCategory(product.category)?.icon || '📦'}</div>
+        ${thumb}
         <h3>${product.name}</h3>
         <p class="vendor">${product.vendor}</p>
         <div class="rating">${product.rating}</div>
@@ -140,10 +145,14 @@ function initProductPage() {
        <button class="btn btn-primary btn-lg" onclick="handleAddToCart('${product.id}')">Add to Cart</button>
        <a href="checkout.html" class="btn btn-outline btn-lg">Buy Now</a>`;
 
+  const img = getProductImage(product);
+
   el.innerHTML = `
     <nav class="breadcrumb"><a href="index.html">Home</a> › <a href="category.html?cat=${product.category}">${cat?.name || ''}</a> › ${product.name}</nav>
     <div class="product-detail-grid">
-      <div class="product-detail-visual">${cat?.icon || '📦'}</div>
+      <div class="product-detail-visual">
+        ${img ? `<img src="${img}" alt="${product.name}" class="product-detail-img">` : (cat?.icon || '📦')}
+      </div>
       <div class="product-detail-info">
         <h1>${product.name}</h1>
         <p class="vendor">${product.vendor}</p>
