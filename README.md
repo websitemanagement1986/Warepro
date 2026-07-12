@@ -19,7 +19,7 @@ Discover, compare, and buy software online in India. Guest checkout with Razorpa
 
 - **Address:** F-020, FF GNS Plaza, Site 4 Kasna, Greater Noida, Gautam Buddha Nagar, UP 201310
 - **Phone:** +91 8826623286
-- **Email:** support@warepro.in
+- **Email:** support@wareprotechpvtltd.in
 
 ## Local Development
 
@@ -55,7 +55,7 @@ npx serve .
 | `RAZORPAY_KEY_ID` | Razorpay Key ID (public) |
 | `RAZORPAY_KEY_SECRET` | Razorpay Key Secret (private) |
 | `RESEND_API_KEY` | Resend.com API key for emails |
-| `FROM_EMAIL` | Sender email (e.g. orders@warepro.in) |
+| `FROM_EMAIL` | Sender email (e.g. orders@wareprotechpvtltd.in) |
 | `ADMIN_EMAIL` | Your email for order alerts |
 
 4. Deploy — Vercel gives you a live URL

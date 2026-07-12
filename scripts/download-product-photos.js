@@ -10,7 +10,7 @@ const http = require('http');
 const dir = path.join(__dirname, '..', 'assets', 'products');
 fs.mkdirSync(dir, { recursive: true });
 
-const UA = 'WareproBot/1.0 (https://wareprotechpvtltd.in; contact@warepro.in)';
+const UA = 'WareproBot/1.0 (https://wareprotechpvtltd.in; support@wareprotechpvtltd.in)';
 
 // Real photos: Unsplash + Pexels + Wikimedia Commons (downloaded once, served locally)
 const PHOTOS = {

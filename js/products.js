@@ -2,7 +2,7 @@ const WAREPRO = {
   name: 'Warepro',
   phone: '+918826623286',
   phoneDisplay: '+91 8826623286',
-  email: 'support@warepro.in',
+  email: 'support@wareprotechpvtltd.in',
   address: 'F-020, FF GNS Plaza, Site 4 Kasna, Greater Noida, Gautam Buddha Nagar, UP 201310',
 };
 
