@@ -1,3 +1,6 @@
+const FREE_DELIVERY_THRESHOLD = 500;
+const DELIVERY_CHARGE = 50;
+
 const PRODUCTS = [
   { id: 'ledgermax-pro', name: 'LedgerMax Pro', price: 4999 },
   { id: 'gstwise-billing', name: 'GSTWise Billing', price: 1499 },
@@ -30,3 +33,24 @@ const PRODUCTS = [
   { id: 'usb-extension-1m', name: 'USB Extension Cable 1m', price: 110 },
   { id: 'hdmi-usb-adapter', name: 'USB to HDMI Adapter', price: 199 },
 ];
+
+function validateCart(cart) {
+  if (!Array.isArray(cart) || cart.length === 0) throw new Error('Cart is empty');
+  const items = [];
+  let subtotal = 0;
+  for (const entry of cart) {
+    const product = PRODUCTS.find((p) => p.id === entry.id);
+    if (!product) throw new Error(`Unknown product: ${entry.id}`);
+    const qty = Number(entry.qty);
+    if (!qty || qty < 1 || qty > 99) throw new Error(`Invalid quantity for ${product.name}`);
+    const lineTotal = product.price * qty;
+    items.push({ id: product.id, name: product.name, price: product.price, qty, lineTotal });
+    subtotal += lineTotal;
+  }
+  if (subtotal <= 0) throw new Error('Invalid order total');
+  const deliveryCharge = subtotal >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_CHARGE;
+  const total = subtotal + deliveryCharge;
+  return { items, subtotal, deliveryCharge, total, amountPaise: Math.round(total * 100) };
+}
+
+module.exports = { PRODUCTS, validateCart };

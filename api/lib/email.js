@@ -23,10 +23,14 @@ async function sendViaResend({ to, subject, html }) {
   return res.json();
 }
 
-function buildOrderHtml({ transactionId, orderId, customer, items, total, isAdmin }) {
+function buildOrderHtml({ transactionId, orderId, customer, items, subtotal, deliveryCharge, total, isAdmin }) {
   const itemRows = items
     .map((i) => `<tr><td>${i.name}</td><td>${i.qty}</td><td>₹${i.lineTotal.toLocaleString('en-IN')}</td></tr>`)
     .join('');
+
+  const deliveryRow = deliveryCharge
+    ? `<tr><td colspan="2" style="padding:8px;">Delivery</td><td style="padding:8px;text-align:right;">₹${deliveryCharge.toLocaleString('en-IN')}</td></tr>`
+    : `<tr><td colspan="2" style="padding:8px;">Delivery</td><td style="padding:8px;text-align:right;">FREE</td></tr>`;
 
   const title = isAdmin ? 'New Order Received' : 'Order Confirmation';
   const greeting = isAdmin
@@ -46,8 +50,12 @@ function buildOrderHtml({ transactionId, orderId, customer, items, total, isAdmi
           <th style="padding:8px;text-align:right;">Amount</th>
         </tr></thead>
         <tbody>${itemRows}</tbody>
-        <tfoot><tr><td colspan="2" style="padding:8px;font-weight:bold;">Total</td>
-          <td style="padding:8px;text-align:right;font-weight:bold;">₹${total.toLocaleString('en-IN')}</td></tr></tfoot>
+        <tfoot>
+          <tr><td colspan="2" style="padding:8px;">Subtotal</td><td style="padding:8px;text-align:right;">₹${subtotal.toLocaleString('en-IN')}</td></tr>
+          ${deliveryRow}
+          <tr><td colspan="2" style="padding:8px;font-weight:bold;">Total</td>
+          <td style="padding:8px;text-align:right;font-weight:bold;">₹${total.toLocaleString('en-IN')}</td></tr>
+        </tfoot>
       </table>
       <p><strong>Customer:</strong> ${customer.name}<br>
          <strong>Email:</strong> ${customer.email}<br>
@@ -57,10 +65,10 @@ function buildOrderHtml({ transactionId, orderId, customer, items, total, isAdmi
     </div>`;
 }
 
-async function sendOrderEmails({ transactionId, orderId, customer, items, total }) {
+async function sendOrderEmails({ transactionId, orderId, customer, items, subtotal, deliveryCharge, total }) {
   const adminEmail = process.env.ADMIN_EMAIL;
-  const buyerHtml = buildOrderHtml({ transactionId, orderId, customer, items, total, isAdmin: false });
-  const adminHtml = buildOrderHtml({ transactionId, orderId, customer, items, total, isAdmin: true });
+  const buyerHtml = buildOrderHtml({ transactionId, orderId, customer, items, subtotal, deliveryCharge, total, isAdmin: false });
+  const adminHtml = buildOrderHtml({ transactionId, orderId, customer, items, subtotal, deliveryCharge, total, isAdmin: true });
 
   await sendViaResend({
     to: customer.email,

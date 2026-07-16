@@ -1,3 +1,6 @@
+const FREE_DELIVERY_THRESHOLD = 500;
+const DELIVERY_CHARGE = 50;
+
 const WAREPRO = {
   name: 'Warepro',
   phone: '+918826623286',

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping Policy | Warepro</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <section class="legal-page"><div class="container" id="legal-content"></div></section>
+  <div id="site-footer"></div>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    renderLegalPage('Shipping Policy', `
+      <p>Last updated: ${new Date().getFullYear()}</p>
+      <p>This Shipping Policy explains how <strong>Warepro</strong> fulfils and delivers orders placed on our website across India.</p>
+
+      <h2>1. Digital Software Products</h2>
+      <p>Software licenses and activation details are delivered electronically to your registered email address within <strong>24–48 hours</strong> of successful payment. No physical shipping is required for digital products and no shipping charge applies.</p>
+
+      <h2>2. Physical Products (Accessories)</h2>
+      <p>For physical items such as cables and computer accessories, we ship to serviceable pin codes throughout India:</p>
+      <ul>
+        <li><strong>Free shipping</strong> on orders of <strong>₹500 and above</strong>.</li>
+        <li><strong>Standard delivery charge of ₹50</strong> applies to orders below ₹500.</li>
+        <li>Estimated delivery time is <strong>3–7 business days</strong> depending on your location.</li>
+      </ul>
+
+      <h2>3. Order Processing</h2>
+      <ul>
+        <li>Digital orders are processed immediately after payment confirmation.</li>
+        <li>Physical orders are typically dispatched within 1–2 business days.</li>
+        <li>You will receive order confirmation and delivery updates by email.</li>
+      </ul>
+
+      <h2>4. Delivery Attempts (Physical Orders)</h2>
+      <p>Our courier partner will attempt delivery at the address provided during checkout. Please ensure your contact details and address are correct. Repeated failed deliveries may result in order cancellation as per our <a href="cancellation.html">Cancellation Policy</a>.</p>
+
+      <h2>5. Undeliverable Orders</h2>
+      <p>Orders may be held or cancelled if the address is incomplete, incorrect, or outside our service area. For prepaid orders, a refund will be initiated after verification.</p>
+
+      <h2>6. Contact</h2>
+      <p>For shipping queries, call <a href="tel:+918826623286">+91 8826623286</a> or email <a href="mailto:support@wareprotechpvtltd.in">support@wareprotechpvtltd.in</a> with your order ID.</p>
+      <p>F-020, FF GNS Plaza, Site 4 Kasna, Greater Noida, Gautam Buddha Nagar, UP 201310.</p>
+    `);
+  </script>
+</body>
+</html>
